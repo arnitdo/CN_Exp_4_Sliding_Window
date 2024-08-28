@@ -14,6 +14,14 @@ export function GoBackN() {
 
 	const [logContent, setLogContent] = useState<string[]>([]);
 
+	const resetSim = () => {
+		setWindowSize(1);
+		setWindow([0, 1]);
+		setTransmitterFrames([]);
+		setReceiverFrames([]);
+		setLogContent(["Reset!"]);
+	};
+
 	const addTransmitterFrame = () => {
 		let frameData = {
 			ackReceived: false,
@@ -182,6 +190,12 @@ export function GoBackN() {
 						setWindowSize(parseInt(e.target.value));
 					}}
 				/>
+				<button
+					onClick={resetSim}
+					className={"p-2 border rounded bg-red-400"}
+				>
+					Reset
+				</button>
 			</div>
 			<div
 				className={
