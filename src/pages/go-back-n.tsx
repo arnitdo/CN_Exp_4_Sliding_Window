@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Frame } from "../components/Frame";
 import { FrameType, type Frame as FrameT } from "../lib";
 
-const TICK_RATE = 2000;
+// const TICK_RATE = 2000;
 
 export function GoBackN() {
 	const [windowSize, setWindowSize] = useState<number>(1);
@@ -68,7 +68,7 @@ export function GoBackN() {
 						setLogContent((prevLog) => {
 							return [
 								...prevLog,
-								...nonAckFrames.map((frameData) => {
+								...nonAckFrames.map(() => {
 									return `Retransmit frame ${
 										nonAckFrame.sequenceNumber
 									} as frame ${prevFrames.length + frameIdx}`;
@@ -91,7 +91,7 @@ export function GoBackN() {
 						setLogContent((prevLog) => {
 							return [
 								...prevLog,
-								...nonAckFrames.map((frameData) => {
+								...nonAckFrames.map(() => {
 									return `Re-Receive frame ${
 										nonAckFrame.sequenceNumber
 									} as frame ${prevFrames.length + frameIdx}`;
@@ -140,7 +140,7 @@ export function GoBackN() {
 	};
 
 	useEffect(() => {
-		setWindow(([prevWindowStart, prevWindowEnd]) => {
+		setWindow(([prevWindowStart]) => {
 			return [prevWindowStart, prevWindowStart + windowSize];
 		});
 	}, [windowSize]);
